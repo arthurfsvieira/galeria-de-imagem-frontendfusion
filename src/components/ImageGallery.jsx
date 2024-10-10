@@ -26,14 +26,14 @@ const ImageGallery = ({ images }) => {
                   onClick={() => removeFromFavorites(image.id)}
                   className="mt-2 bg-red-500 text-white py-1 px-4 rounded"
                 >
-                  Remover dos Favoritos
+                  Remove from Favorites
                 </button>
               ) : (
                 <button
                   onClick={() => addToFavorites(image)}
                   className="mt-2 bg-blue-500 text-white py-1 px-4 rounded"
                 >
-                  Adicionar aos Favoritos
+                  Add to Favorites
                 </button>
               )}
             </div>

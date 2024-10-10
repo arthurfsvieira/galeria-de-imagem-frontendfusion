@@ -261,8 +261,8 @@ function App() {
         <div className="App">
           <nav className="bg-gray-800 p-4">
             <div className="container mx-auto flex justify-between">
-              <Link to="/" className="text-white text-lg">Galeria</Link>
-              <Link to="/favorites" className="text-white text-lg">Favoritos</Link>
+              <Link to="/" className="text-white text-lg">Gallery</Link>
+              <Link to="/favorites" className="text-white text-lg">Favorites</Link>
             </div>
           </nav>
 
