@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react';
 import ImageGallery from './components/ImageGallery';
-import { FavoritesContext } from './components/FavoritesContext';
+import { FavoritesContext, FavoritesProvider } from './context/FavoritesContext';
 import './App.css';
 
 function App() {
@@ -254,9 +254,11 @@ function App() {
 
 
   return (
-    <div>
-      <ImageGallery images={images}/>
-    </div>
+    <FavoritesProvider>
+      <div className='App'>
+        <ImageGallery images={images}/>
+      </div>
+    </FavoritesProvider>
   );
 }
 

@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { FavoritesContext } from '../context/FavoritesContext';
 
 const ImageGallery = ({ images }) => {
+  const { addToFavorites, removeFromFavorites, isFavorite } = useContext(FavoritesContext);
+
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold text-center mb-8">Image Gallery</h1>
@@ -18,6 +21,21 @@ const ImageGallery = ({ images }) => {
             <div className="p-4 text-center">
               <h2 className="text-lg font-semibold">{image.author}</h2>
               <p className="text-gray-600">{`${image.width} x ${image.height}`}</p>
+              {isFavorite(image.id) ? (
+                <button
+                  onClick={() => removeFromFavorites(image.id)}
+                  className="mt-2 bg-red-500 text-white py-1 px-4 rounded"
+                >
+                  Remover dos Favoritos
+                </button>
+              ) : (
+                <button
+                  onClick={() => addToFavorites(image)}
+                  className="mt-2 bg-blue-500 text-white py-1 px-4 rounded"
+                >
+                  Adicionar aos Favoritos
+                </button>
+              )}
             </div>
           </div>
         ))}
