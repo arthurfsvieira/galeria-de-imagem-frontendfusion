@@ -1,12 +1,14 @@
-import React,{useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import ImageGallery from './components/ImageGallery';
-import { FavoritesContext, FavoritesProvider } from './context/FavoritesContext';
-import './App.css';
+import Favorites from './components/Favorites';
+import { FavoritesProvider } from './context/FavoritesContext';
+import './index.css';
 
 function App() {
   const [images, setImages] = useState([]);
 
-  useEffect(()=> {
+  useEffect(() => {
     const fetchedImages = [
       {
         "id": "0",
@@ -249,17 +251,29 @@ function App() {
         "download_url": "https://picsum.photos/id/29/4000/2670"
       }
     ];
+
     setImages(fetchedImages);
   }, []);
 
-
   return (
     <FavoritesProvider>
-      <div className='App'>
-        <ImageGallery images={images}/>
-      </div>
+      <Router>
+        <div className="App">
+          <nav className="bg-gray-800 p-4">
+            <div className="container mx-auto flex justify-between">
+              <Link to="/" className="text-white text-lg">Galeria</Link>
+              <Link to="/favorites" className="text-white text-lg">Favoritos</Link>
+            </div>
+          </nav>
+
+          <Routes>
+            <Route path="/" element={<ImageGallery images={images} />} />
+            <Route path="/favorites" element={<Favorites />} />
+          </Routes>
+        </div>
+      </Router>
     </FavoritesProvider>
   );
 }
 
-export default App
+export default App;
